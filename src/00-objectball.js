@@ -115,3 +115,88 @@ function gameObject() {
     }
 }
 console.log(gameObject())   
+function numPointsScored(playerName) {
+    const game = gameObject();
+    for (const team in game) {
+        if(game.hasOwnProperty(team)) {
+            const players = game[team].players;
+            if (players.hasOwnProperty(playerName)) {
+                return players[playerName].points; 
+            }
+        }
+    }
+ }
+ console.log(numPointsScored("Alan Anderson")); 
+ function shoeSize(playerName) {
+    const game = gameObject(); 
+    for (const team in game) {
+        if (game.hasOwnProperty(team)) {
+            const players = game[team].players;
+            if (players.hasOwnProperty(playerName)) {
+                return players[playerName].shoe;
+            }
+        }
+    }
+ }
+ console.log(shoeSize("Alan Anderson")); 
+ function teamColors(teamName) {
+    const game = gameObject();
+    for (const team in game) {
+        if (game.hasOwnProperty(team)) {
+            if (game[team].teamName === teamName) {
+                return game[team].colors;
+            }
+        }
+    }
+ }
+ console.log(teamColors("Brooklyn Nets")); 
+ function teamName() {
+    const game = gameObject();
+    return [game.home.teamName, game.away.teamName]; 
+ }
+ console.log(teamName()); 
+ function playerNumbers(teamName) {
+    const game = gameObject();
+    for (const team in game) {
+        if (game.hasOwnProperty(team)) {
+            if (game[team].teamName === teamName) {
+                const players = game[team].players; 
+                return Object.values(players).map(player => player.number);
+            }
+        }
+    }
+ }
+ console.log(playerNumbers("Brooklyn Nets")); 
+ function playerStates(playerName) {
+    const game = gameObject(); 
+    for (const team in game) {
+        if (game.hasOwnProperty(team)) {
+            const players = game[team].players;
+            if (players.hasOwnProperty(playerName)) {
+                return players[playerName];
+            }
+        }
+    }
+ }
+ console.log(playerStates("Alan Anderson")); 
+ function bigShoeRebounds() {
+    const game = gameObject();
+    let maxShoeSize = 0; 
+    let playerWithMaxShoe = null; 
+    for (const team in game) {
+        if (game.hasOwnProperty(team)) {
+            const players = game[team].players;
+            for (const playerName in players) {
+                if (players.hasOwnProperty(playerName)) {
+                    const player = players[playerName];
+                    if (player.shoe > maxShoeSize) {
+                        maxShoeSize = player.shoe 
+                        playerWithMaxShoe = player; 
+                        return playerWithMaxShoe.rebounds; 
+                    }
+                }
+            }
+        }
+    }
+ }
+console.log(bigShoeRebounds("Mason Plumlee"));
